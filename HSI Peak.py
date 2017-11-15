@@ -29,5 +29,3 @@ if __name__=='__main__':
     print(testdata)
     print(testdata.loc[todate('1986/12-31')])
     print(testdata[(testdata.HSIPrice==2568.300049)].index)
-
-
