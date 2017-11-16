@@ -32,6 +32,18 @@ class GetData():
         date = datetime.date.fromordinal(rawdate + date)
         return date
 
+    def GetStocksHighLow(stockprice):
+        high = [[0]]
+        low = [[0]]
+        for c in range(0,len(stockprice.columns)):
+            n = 0
+            high[0][0] = stockprice.iloc[c,0]
+            low[0][0] = stockprice.iloc[c,0]
+            for i in range(0,len(stockprice.iloc[:,c:c])):
+                if  stockprice.iloc[i:i,c:c] > high[c][n]:
+                    high[c].append(stockprice)
+
+
 if __name__=='__main__':
     filepath = r'E:\zain\data colletion\600807.xlsx'
     data = GetData.GetGuoXinDataList(filepath)
@@ -42,3 +54,4 @@ if __name__=='__main__':
     HSIdata = []
     print(Rawdata.col_values(0)[2])
     print(GetData.GetExcelDate(Rawdata.col_values(0)[2]))
+

@@ -14,9 +14,7 @@ def todate(self):
 if __name__=='__main__':
     filepath = (r'E:\zain\newproject\StockSeries\HSI.xlsx')
     Workbook = xlrd.open_workbook(filepath)
-
     Rawdata = Workbook.sheet_by_index(0)
-    HSIdata = []
 
     sublist = []
     for r in range(1,len(Rawdata.col_values(0))):
@@ -26,6 +24,18 @@ if __name__=='__main__':
     subpricelist = Rawdata.col_values(1)
     del subpricelist[0]
     testdata = DataFrame(subpricelist,index=sublist,columns=['HSIPrice'])
-    print(testdata)
-    print(testdata.loc[todate('1986/12-31')])
-    print(testdata[(testdata.HSIPrice==2568.300049)].index)
+    # print(testdata)
+    # print(testdata.loc[todate('1986/12-31')])
+    # print(testdata[(testdata.HSIPrice==2568.300049)].index)
+
+    #print(len(testdata['HSIPrice'].values))
+    #print(testdata.iloc[:,0:len(testdata.columns)])
+    print(len(testdata.iloc[:, 0:len(testdata.columns)]))
+
+    print(GetData.GetStocksHighLow(testdata))
+
+
+
+
+
+
