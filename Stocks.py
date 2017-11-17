@@ -35,14 +35,23 @@ class GetData():
     def GetStocksHighLow(stockprice):
         high = [[0]]
         low = [[0]]
+        subhigh = [[0]]
+        sublow = [[0]]
         for c in range(0,len(stockprice.columns)):
             n = 0
-            high[0][0] = stockprice.iloc[c,0]
-            low[0][0] = stockprice.iloc[c,0]
+            high[c][0] = stockprice.iloc[c,0]
+            low[c][0] = stockprice.iloc[c,0]
+            subhigh[c][0] = stockprice.iloc[c,0]
+            sublow[c][0] = stockprice.iloc[c,0]
             for i in range(0,len(stockprice.iloc[:,c:c])):
-                if  stockprice.iloc[i:i,c:c] > high[c][n]:
-                    high[c].append(stockprice)
+                if  stockprice.iloc[i,c] > high[c][n]:
+                    high[c].append(stockprice.iloc[i,c])
+                    n += 1
+                    continue
+                if stockprice.iloc[i,c] < low[c][n]:
 
+
+        return high
 
 if __name__=='__main__':
     filepath = r'E:\zain\data colletion\600807.xlsx'
@@ -54,4 +63,9 @@ if __name__=='__main__':
     HSIdata = []
     print(Rawdata.col_values(0)[2])
     print(GetData.GetExcelDate(Rawdata.col_values(0)[2]))
+
+
+
+
+
 
