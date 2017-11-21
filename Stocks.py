@@ -37,19 +37,21 @@ class GetData():
         low = [[0]]
         subhigh = [[0]]
         sublow = [[0]]
+        subhighdate = [[0]]
+        sublowdate = [[0]]
         for c in range(0,len(stockprice.columns)):
             n = 0
             high[c][0] = stockprice.iloc[c,0]
             low[c][0] = stockprice.iloc[c,0]
             subhigh[c][0] = stockprice.iloc[c,0]
+            subhighdate[c][0] =stockprice.index[0]
             sublow[c][0] = stockprice.iloc[c,0]
-            for i in range(0,len(stockprice.iloc[:,c:c])):
-                if  stockprice.iloc[i,c] > high[c][n]:
-                    high[c].append(stockprice.iloc[i,c])
-                    n += 1
-                    continue
-                if stockprice.iloc[i,c] < low[c][n]:
-
+            sublowdate[c][0] = stockprice.index[0]
+            for i in range(0,len(stockprice.iloc[:,c])):
+                if  stockprice.iloc[i,c] > subhigh[c][n]:
+                    subhigh[c].append(stockprice.iloc[i,c])
+                if  stockprice.iloc[i,c] < sublow[c][n]:
+                    sublow[c].append(stockprice.iloc[i,c])
 
         return high
 
